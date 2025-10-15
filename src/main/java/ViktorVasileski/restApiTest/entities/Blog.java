@@ -1,16 +1,22 @@
 package ViktorVasileski.restApiTest.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Random;
 
 @Getter
 @Setter
 @ToString
+@Entity
 public class Blog {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private long id;
     private String category;
@@ -20,8 +26,6 @@ public class Blog {
     private int readingTime;
 
     public Blog(String category, String title, String content, int readingTime){
-        Random rndm = new Random();
-        this.id = rndm.nextInt(1, 1000);
         this.category = category;
         this.title = title;
         this.cover = "https://picsum.photos/200/300";
