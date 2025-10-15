@@ -1,9 +1,6 @@
 package ViktorVasileski.restApiTest.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,12 +21,16 @@ public class Blog {
     private String cover;
     private String content;
     private int readingTime;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private Author author;
 
-    public Blog(String category, String title, String content, int readingTime){
+    public Blog(String category, String title, String content, int readingTime, Author author){
         this.category = category;
         this.title = title;
         this.cover = "https://picsum.photos/200/300";
         this.content = content;
         this.readingTime = readingTime;
+        this.author=author;
     }
 }
