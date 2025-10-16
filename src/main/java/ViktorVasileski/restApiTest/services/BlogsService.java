@@ -78,8 +78,10 @@ public class BlogsService {
             Map result = imageUploader.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
             String imageURL= (String) result.get("url");
             found.setCover(imageURL);
+//            TODO: non tornare il link, tornare invece l'oggetto, tornare stringhe è sbagliato
             return imageURL;
         } catch(IOException e){
+//            TODO: inserire gestione dell'eccezione personalizzata non runtime generica
             throw new RuntimeException(e);
         }
     }
