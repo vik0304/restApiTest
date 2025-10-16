@@ -44,7 +44,7 @@ public class BlogsController {
         this.blogsService.findByIdAndDelete(id);
     }
 
-    @PatchMapping("/{blogId/cover")
+    @PatchMapping("/{blogId}/cover")
     public String uploadImage(@PathVariable long id, @RequestParam("cover")MultipartFile file) throws IOException{
         System.out.println(file.getSize());
         System.out.println(file.getName());
